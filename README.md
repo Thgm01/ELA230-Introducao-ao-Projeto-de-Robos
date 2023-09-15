@@ -19,5 +19,7 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 
 ### Peças
 
+![alt-text-1](docs/robot_files/images/001.png "title-1") ![alt-text-2](docs/robot_files/images/002.png "title-2")
+
 
 
