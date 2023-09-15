@@ -22,6 +22,7 @@ Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
 
 ## 🔨 Montagem do Robô
 Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_axes.PDF).
+***
 
 ### Lista de Materiais
 | N° do Artigo |     Nome       |    Descrição     | QTE |
@@ -95,7 +96,7 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 Symétrie 300                                   |
 :---------------------------------------------:|
 ![](docs/robot_files/images/Symetrie_300.png)  |
-
+***
 
 ## Autores
 
@@ -106,7 +107,7 @@ Symétrie 300                                   |
 * Pedro A. de Araújo - pedroarraesdearaujo@gmail.com
 * Thiago T. Moura - rpj134@gmail.com
 
-Centro Universitário FEI
+Centro Universitário FEI, São Bernardo.
 
 
  
