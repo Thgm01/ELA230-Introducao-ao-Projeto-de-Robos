@@ -24,7 +24,41 @@ Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
 Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_axes.PDF).
 
 ### Lista de Materiais
-
+| N° do Artigo |     Nome       |    Descrição     | QTE |
+| ------------ | -------------- | ---------------- | --- |
+|      1       |  3x7x3         | ball bearing     |  8  |
+|      2       |  40x68x15      | ball bearing     |  1  |
+|      3       |  5_9_3 (2)     | ball bearing     |  5  |
+|      4       |  Servo MG996R  | Servo motor      |  3  |
+|      5       |  Servo 9g SG90 | Servo motor      |  1  |
+|      6       |  Servo disc    |         -        |  3  |
+|      7       |  arbre 6x46.8  |         -        |  1  |
+|      8       |  HNH-BRN-M3-25 | Hexagonal spacer |  4  |
+|      9       |  HNH-BRN-M3-20 | Hexagonal spacer |  4  |
+|      10      |  CSH-STN-M5-55 | M5 * 55          |  1  |
+|      11      |  SCB3_25       | M3 * 25          |  1  |
+|      12      |  SCB3_30       | M3 * 30          |  2  |
+|      13      |  001           |         -        |  1  |
+|      14      |  002           |         -        |  1  |
+|      15      |  100           |         -        |  2  |
+|      16      |  101           |         -        |  1  |
+|      17      |  102           |         -        |  1  |
+|      18      |  103           |         -        |  1  |
+|      19      |  104           |         -        |  1  |
+|      20      |  105           |         -        |  1  |
+|      21      |  106           |         -        |  1  |
+|      22      |  107           |         -        |  1  |
+|      23      |  107           |         -        |  1  |
+|      24      |  300           |         -        |  1  |
+|      25      |  Symétrie_300  | Symétrie_300     |  1  |
+|      26      |  301           |         -        |  1  |
+|      27      |  302           |         -        |  2  |
+|      28      |  400           |         -        |  1  |
+|      29      |  401           |         -        |  1  |
+|      30      |  402           |         -        |  1  |
+|      31      |  support       |         -        |  1  |
+|      32      |  150           |         -        |  2  |
+|      33      |  168           |         -        |  1  |
 ***
 
 ### 🧩 Peças
@@ -54,43 +88,13 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 ![](docs/robot_files/images/302.png)  |  ![](docs/robot_files/images/400.png)  |  ![](docs/robot_files/images/401.png)
 
 
-402                                   |
-:------------------------------------:|
-![](docs/robot_files/images/402.png)  |
+402                                   |            Arbre 6x46                         |            Suport   
+:------------------------------------:|:----------------------------------------------|:--------------------------------------:
+![](docs/robot_files/images/402.png)  |  ![](docs/robot_files/images/arbre_6x46.png)  |  ![](docs/robot_files/images/support.png)
+
+Symetrie 300                                   |
+:---------------------------------------------:|
+![](docs/robot_files/images/Symetrie_300.png)  |
 
 
-| N° do Artigo |     Nome       |    Descrição     | QTE |
-| ------------ | -------------- | ---------------- | --- |
-|      1       |  3x7x3         | ball bearing     |  8  |
-|      2       |  40x68x15      | ball bearing     |  1  |
-|      3       |  5_9_3 (2)     | ball bearing     |  5  |
-|      4       |  Servo MG996R  | Servo motor      |  3  |
-|      5       |  Servo 9g SG90 | Servo motor      |  1  |
-|      6       |  Servo disc    |         -        |  3  |
-|      7       |  arbe 6x46.8   |         -        |  1  |
-|      8       |  HNH-BRN-M3-25 | Hexagonal spacer |  4  |
-|      9       |  HNH-BRN-M3-20 | Hexagonal spacer |  4  |
-|      10      |  CSH-STN-M5-55 | M5 * 55          |  1  |
-|      11      |  SCB3_25       | M3 * 25          |  1  |
-|      12      |  SCB3_30       | M3 * 30          |  2  |
-|      13      |  001           |         -        |  1  |
-|      14      |  002           |         -        |  1  |
-|      15      |  100           |         -        |  2  |
-|      16      |  101           |         -        |  1  |
-|      17      |  102           |         -        |  1  |
-|      18      |  103           |         -        |  1  |
-|      19      |  104           |         -        |  1  |
-|      20      |  105           |         -        |  1  |
-|      21      |  106           |         -        |  1  |
-|      22      |  107           |         -        |  1  |
-|      23      |  107           |         -        |  1  |
-|      24      |  300           |         -        |  1  |
-|      25      |  Symétrie_300  | Symétrie_300     |  1  |
-|      26      |  301           |         -        |  1  |
-|      27      |  302           |         -        |  2  |
-|      28      |  400           |         -        |  1  |
-|      29      |  401           |         -        |  1  |
-|      30      |  402           |         -        |  1  |
-|      31      |  support       |         -        |  1  |
-|      32      |  150           |         -        |  2  |
-|      33      |  168           |         -        |  1  |
+
