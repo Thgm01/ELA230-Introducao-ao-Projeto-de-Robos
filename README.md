@@ -22,7 +22,6 @@ Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
 
 ## 🔨 Montagem do Robô
 Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_axes.PDF).
-***
 
 ### Lista de Materiais
 | N° do Artigo |     Nome       |    Descrição     | QTE |
@@ -60,7 +59,6 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 |      31      |  support       |         -        |  1  |
 |      32      |  150           |         -        |  2  |
 |      33      |  168           |         -        |  1  |
-***
 
 ### 🧩 Peças
 
