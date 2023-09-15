@@ -92,9 +92,22 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 :------------------------------------:|:----------------------------------------------|:--------------------------------------:
 ![](docs/robot_files/images/402.png)  |  ![](docs/robot_files/images/arbre_6x46.png)  |  ![](docs/robot_files/images/support.png)
 
-Symetrie 300                                   |
+Symétrie 300                                   |
 :---------------------------------------------:|
 ![](docs/robot_files/images/Symetrie_300.png)  |
 
 
+## Autores
+
+* Gustavo R. Collado - rosellcoll2007@gmail.com
+* João Victor G. Prado - jjvgomes14@gmail.com
+* Luis F. N. Rotta - rottalipe@gmail.com
+* Massiel B. Ramón - massi00br@gmail.com
+* Pedro A. de Araújo - pedroarraesdearaujo@gmail.com
+* Thiago T. Moura - rpj134@gmail.com
+
+Centro Universitário FEI
+
+
+ 
 
