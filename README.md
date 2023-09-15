@@ -41,10 +41,12 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 
 302                                   |            400                         |            401   
 :------------------------------------:|:--------------------------------------:|:--------------------------------------:
-![](docs/robot_files/images/100.png)  |  ![](docs/robot_files/images/101.png)  |  ![](docs/robot_files/images/101.png)
+![](docs/robot_files/images/302.png)  |  ![](docs/robot_files/images/400.png)  |  ![](docs/robot_files/images/401.png)
 
 
-
+402                                   
+:------------------------------------:
+![](docs/robot_files/images/402.png)
 
 
 
