@@ -10,6 +10,8 @@ Repositório com a finalidade de acompanhar o desenvolvimento de um braço robó
 
 
 Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
+
+[Link do Projeto no Thingiverse.](https://www.thingiverse.com/thing:4982741/files)
 ***
 
 ## ⚙️ Ambiente Utilizado
@@ -18,6 +20,7 @@ Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
 ***
 
 ## Configurando o Ambiente
+
 ***
 
 ## 🔨 Montagem do Robô
