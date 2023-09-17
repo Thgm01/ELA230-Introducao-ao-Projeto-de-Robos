@@ -8,7 +8,6 @@ Repositório com a finalidade de acompanhar o desenvolvimento de um braço robó
   <img src="docs/robot_files/images/featured_preview_Capture2.PNG" width="200" /> 
 </p>
 
-
 Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
 
 [Link do Projeto no Thingiverse.](https://www.thingiverse.com/thing:4982741/files)
@@ -20,7 +19,9 @@ Para acessar todos os arquivos do Robô [Clique Aqui](docs/robot_files/).
 ***
 
 ## Configurando o Ambiente
+Primeiro de tudo deve-se ter um Raspberry Pi configurado com o OS atualizado, para isso você pode seguir os passos fornecidos pelo site [Clicando Aqui](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up).
 
+Para as ligações e configurações do módulo PCA9685 basta seguir os passos do vídeo [Clicando Aqui](https://www.youtube.com/watch?v=9).
 ***
 
 ## 🔨 Montagem do Robô
@@ -89,7 +90,6 @@ Para acessar o pdf utilizado como base para montagem [Clique Aqui](docs/Robot_4_
 :------------------------------------:|:--------------------------------------:|:--------------------------------------:
 ![](docs/robot_files/images/302.png)  |  ![](docs/robot_files/images/400.png)  |  ![](docs/robot_files/images/401.png)
 
-
 402                                   |            Arbre 6x46                         |            Suport   
 :------------------------------------:|:----------------------------------------------|:--------------------------------------:
 ![](docs/robot_files/images/402.png)  |  ![](docs/robot_files/images/arbre_6x46.png)  |  ![](docs/robot_files/images/support.png)
@@ -110,6 +110,6 @@ Symétrie 300                                   |
 
 [Centro Universitário FEI, São Bernardo](https://portal.fei.edu.br/)
 
-
  
+
 
