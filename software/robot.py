@@ -17,8 +17,9 @@ class Robot:
         # self.pca.frequency = 60
         self.joints_number = 4
         
-        self.atual_angles = [90,90,90,90]
-        self.home_angles = self.atual_angles
+        self.home_angles = [90,90,90,90]
+        self.atual_angles = self.home_angles
+
 
     def degrees_to_pwm(self, angle_degrees):
         angle_pwm = int((UPPER_LIMIT_PWM - LOWER_LIMIT_PWM)/(UPPER_LIMIT_DG - LOWER_LIMIT_DG)*angle_degrees + LOWER_LIMIT_PWM)
@@ -29,6 +30,7 @@ class Robot:
         # angle_pwm = self.degrees_to_pwm(angle_degrees)
         # self.pca.channels[joint_number-1].duty_cycle = angle_pwm
         self.atual_angles[joint_number-1] = angle_degrees
+        print(f'Set Joint {joint_number}: {angle_degrees}\t | All angles: {self.atual_angles}')
 
     def set_all_joints_angle(self, list_angle_degrees):
         for j in range(0, self.joints_number):
