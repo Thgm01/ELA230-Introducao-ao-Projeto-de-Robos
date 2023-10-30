@@ -11,6 +11,10 @@ class MainWindow:
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
         self.ui.set_hp_button.clicked.connect(self.set_hp_button_clicked)
+        self.ui.set_all_button.clicked.connect(self.set_all_button_clicked)
+
+        self.ui.set_j1_button.clicked.connect(self.set_j1_button_clicked)
+        
 
         self.robot = Robot()
 
@@ -22,6 +26,17 @@ class MainWindow:
         print('set_hp_clicado')
         self.robot.home_position()
         print(self.robot.atual_angles)
+
+    def set_all_button_clicked(self):
+        pass
+
+    def set_j1_button_clicked(self):
+        pass
+
+
+
+
+    
 
 
 

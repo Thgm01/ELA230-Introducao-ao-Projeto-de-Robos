@@ -21,7 +21,7 @@ class Ui_MainWindow(object):
         self.side2_robot.setEnabled(True)
         self.side2_robot.setGeometry(QtCore.QRect(0, 0, 531, 381))
         self.side2_robot.setText("")
-        self.side2_robot.setPixmap(QtGui.QPixmap("../docs/robot_files/images/side2.jpg"))
+        self.side2_robot.setPixmap(QtGui.QPixmap("docs\\robot_files\images\side2.jpg"))
         self.side2_robot.setScaledContents(True)
         self.side2_robot.setObjectName("side2_robot")
         self.joit1_pos = QtWidgets.QTextEdit(self.centralwidget)
