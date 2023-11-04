@@ -17,71 +17,155 @@ class MainWindow:
         self.ui.set_j2_button.clicked.connect(self.set_j2_button_clicked)
         self.ui.set_j3_button.clicked.connect(self.set_j3_button_clicked)
         self.ui.set_ee_button.clicked.connect(self.set_ee_button_clicked)
+        self.ui.new_mov_button.clicked.connect(self.new_move)
+        self.ui.exclude_mov_button.clicked.connect(self.exclude_move)
+
+        self.ui.save_pos_button.clicked.connect(self.save_position)
+
+        self.ui_joints = [self.ui.joint1_pos, self.ui.joint2_pos, self.ui.joint3_pos, self.ui.ee_pos]
 
         self.robot = Robot()
 
+        self.movements = list()
+        self.atual_move = 0
+        self.edit_mode = False
+
+    def save_position(self):
+        print(self.ui_get_joint_angle(1, self.atual_move))
 
     def show(self):
         self.main_win.show()
 
     def set_hp_button_clicked(self):
         self.robot.home_position()
-        self.ui_atualize_joints_angles()
+        joint_angles = list()
+        for angles in self.robot.atual_angles:
+            joint_angles.append(angles)
+        self.ui_atualize_joints_angles(joint_angles)
 
     def set_all_button_clicked(self):
         self.set_j1_button_clicked()
         self.set_j2_button_clicked()
         self.set_j3_button_clicked()
         self.set_ee_button_clicked()
-        
-        pass
 
     def set_j1_button_clicked(self):
 
-        joint1_angle = self.robot.atual_angles[0]
-
-        if self.ui.joint1_pos.toPlainText().isnumeric():
-            joint1_angle = int(self.ui.joint1_pos.toPlainText())
+        joint1_angle = self.ui_get_joint_angle(1, 0)
 
         self.robot.set_single_joint_angle(1, joint1_angle)
-        self.ui.joint1_pos.setText(str(self.robot.atual_angles[0]))
+        self.ui_joints[0].setText(str(self.robot.atual_angles[0]))
 
     def set_j2_button_clicked(self):
 
-        joint2_angle = self.robot.atual_angles[1]
+        joint2_angle = self.ui_get_joint_angle(2, 0)
 
-        if self.ui.joint2_pos.toPlainText().isnumeric():
-            joint2_angle = int(self.ui.joint2_pos.toPlainText())
-
-        self.robot.set_single_joint_angle(2, joint2_angle)
-        self.ui.joint2_pos.setText(str(self.robot.atual_angles[1]))
+        self.robot.set_single_joint_angle(1, joint2_angle)
+        self.ui_joints[1].setText(str(self.robot.atual_angles[1]))
 
     def set_j3_button_clicked(self):
 
-        joint3_angle = self.robot.atual_angles[2]
+        joint3_angle = self.ui_get_joint_angle(3, 0)
 
-        if self.ui.joint3_pos.toPlainText().isnumeric():
-            joint3_angle = int(self.ui.joint3_pos.toPlainText())
-
-        self.robot.set_single_joint_angle(3, joint3_angle)
-        self.ui.joint3_pos.setText(str(self.robot.atual_angles[2]))
+        self.robot.set_single_joint_angle(1, joint3_angle)
+        self.ui_joints[2].setText(str(self.robot.atual_angles[2]))
 
     def set_ee_button_clicked(self):
+        ee_angle = self.ui_get_joint_angle(4, 0)
 
-        ee_angle = self.robot.atual_angles[3]
+        self.robot.set_single_joint_angle(1, ee_angle)
+        self.ui_joints[3].setText(str(self.robot.atual_angles[3]))
 
-        if self.ui.ee_pos.toPlainText().isnumeric():
-            ee_angle = int(self.ui.ee_pos.toPlainText())
+    def ui_atualize_joints_angles(self, joint_angles):
+        for i in range(4):
+            self.ui_joints[i].setText(str(joint_angles[i]))
 
-        self.robot.set_single_joint_angle(4, ee_angle)
-        self.ui.ee_pos.setText(str(self.robot.atual_angles[3]))
+    def new_move(self):
+        if not self.edit_mode:
+            self.atual_move += 1
+            self.edit_mode = True
+            self.ui_atualize_joints_angles(self.robot.home_angles)
+            self.movements.append(self.robot.home_angles)
+        else:
+            #salvar os valores escritos no index do atual move
+            self.movements[self.atual_move-1] = self.ui_get_all_joint_angle(self.atual_move)
+            self.movements.append(self.movements[self.atual_move-1])
+            self.ui_atualize_joints_angles(self.movements[self.atual_move-1])
 
-    def ui_atualize_joints_angles(self):
-        self.ui.joint1_pos.setText(str(self.robot.atual_angles[0]))
-        self.ui.joint2_pos.setText(str(self.robot.atual_angles[1]))
-        self.ui.joint3_pos.setText(str(self.robot.atual_angles[2]))
-        self.ui.ee_pos.setText(str(self.robot.atual_angles[3]))
+
+            self.atual_move += 1
+
+            
+        self.ui.move_label.setText(f'Move {self.atual_move}')
         
+        print(self.movements)
+
+    def exclude_move(self):
+        qnt_moves = len(self.movements)
+        if qnt_moves == 0:
+            return
+        
+        elif qnt_moves == 1:
+            self.atual_move -= 1
+            self.movements.pop()
+            self.edit_mode = False
+            self.ui.move_label.setText('')
+            self.clear_all_ui_joint_angles()
+
+        elif self.atual_move == 1:
+            self.movements.pop(0)
+            self.ui_atualize_joints_angles(self.movements[0])
+        
+        else:
+            self.movements.pop(self.atual_move-1)
+            self.atual_move -= 1
+            self.ui.move_label.setText(f'Move {self.atual_move}')
+            self.ui_atualize_joints_angles(self.movements[self.atual_move-1])
+
+        print(self.movements)
+
+
+
+        
+    
+        
+    def clear_all_ui_joint_angles(self):
+        for i in range(4):
+            self.ui_joints[i].setText('')
+
+
+
+            
+        
+
+        # if len(self.movement) != 0 :
+        #     self.movement.pop()
+        #     self.ui.move_label.setText(f'Move {len(self.movement)+1}')
+        # else:
+        #     self.ui.move_label.setText('')
+        #     self.edit_mode = False
+
+    def ui_get_joint_angle(self, joint_number, move):
+        joint_number -= 1
+        if move <= 1:
+            joint_angle = self.robot.atual_angles[joint_number]
+        else:
+            joint_angle = self.movements[move-1]
+
+        if self.ui_joints[joint_number].toPlainText().isnumeric():
+                joint_angle = int(self.ui_joints[joint_number].toPlainText())
+
+        return joint_angle    
+
+    def ui_get_all_joint_angle(self, move):
+        joint_angles = list()
+
+        for i in range(4):
+            joint_angles.append(self.ui_get_joint_angle(i, move))
+        
+        print(joint_angles)
+
+        return joint_angles   
 
 
 
