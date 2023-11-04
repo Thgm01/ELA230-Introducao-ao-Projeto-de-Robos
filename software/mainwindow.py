@@ -19,6 +19,8 @@ class MainWindow:
         self.ui.set_ee_button.clicked.connect(self.set_ee_button_clicked)
         self.ui.new_mov_button.clicked.connect(self.new_move)
         self.ui.exclude_mov_button.clicked.connect(self.exclude_move)
+        self.ui.previous_pos_button.clicked.connect(self.previous_position)
+        self.ui.next_pos_button.clicked.connect(self.next_position)
 
         self.ui.save_pos_button.clicked.connect(self.save_position)
 
@@ -29,6 +31,23 @@ class MainWindow:
         self.movements = list()
         self.atual_move = 0
         self.edit_mode = False
+
+    def next_position(self):
+        if self.atual_move == len(self.movements):
+            return
+        else:
+            self.atual_move += 1
+        
+        self.ui_atualize_move(self.atual_move)
+
+    def previous_position(self):
+        if self.atual_move <= 1:
+            return
+        else:
+            self.atual_move -= 1
+
+        self.ui_atualize_move(self.atual_move)
+            
 
     def save_position(self):
         print(self.ui_get_joint_angle(1, self.atual_move))
@@ -84,19 +103,14 @@ class MainWindow:
         if not self.edit_mode:
             self.atual_move += 1
             self.edit_mode = True
-            self.ui_atualize_joints_angles(self.robot.home_angles)
             self.movements.append(self.robot.home_angles)
         else:
             #salvar os valores escritos no index do atual move
             self.movements[self.atual_move-1] = self.ui_get_all_joint_angle(self.atual_move)
             self.movements.append(self.movements[self.atual_move-1])
-            self.ui_atualize_joints_angles(self.movements[self.atual_move-1])
-
-
             self.atual_move += 1
 
-            
-        self.ui.move_label.setText(f'Move {self.atual_move}')
+        self.ui_atualize_move(self.atual_move)
         
         print(self.movements)
 
@@ -109,26 +123,18 @@ class MainWindow:
             self.atual_move -= 1
             self.movements.pop()
             self.edit_mode = False
-            self.ui.move_label.setText('')
-            self.clear_all_ui_joint_angles()
 
         elif self.atual_move == 1:
             self.movements.pop(0)
-            self.ui_atualize_joints_angles(self.movements[0])
         
         else:
             self.movements.pop(self.atual_move-1)
             self.atual_move -= 1
-            self.ui.move_label.setText(f'Move {self.atual_move}')
-            self.ui_atualize_joints_angles(self.movements[self.atual_move-1])
+        
+        self.ui_atualize_move(self.atual_move)
 
         print(self.movements)
-
-
-
-        
     
-        
     def clear_all_ui_joint_angles(self):
         for i in range(4):
             self.ui_joints[i].setText('')
@@ -167,6 +173,15 @@ class MainWindow:
 
         return joint_angles   
 
+    def ui_atualize_move(self, move):
+        if move == 0:
+            self.ui.move_label.setText('')
+            self.clear_all_ui_joint_angles()
+        else:
+            self.ui.move_label.setText(f'Move {self.atual_move}')
+            self.ui_atualize_joints_angles(self.movements[self.atual_move-1])
+
+        
 
 
 
