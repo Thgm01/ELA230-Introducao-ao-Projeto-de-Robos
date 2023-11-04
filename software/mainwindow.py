@@ -112,7 +112,7 @@ class MainWindow:
 
         self.ui_atualize_move(self.atual_move)
         
-        print(self.movements)
+        #print(self.movements)
 
     def exclude_move(self):
         qnt_moves = len(self.movements)
@@ -160,15 +160,16 @@ class MainWindow:
 
         if self.ui_joints[joint_number].toPlainText().isnumeric():
                 joint_angle = int(self.ui_joints[joint_number].toPlainText())
-
+        print(f'Joint {joint_number}: {joint_angle}')
         return joint_angle    
 
     def ui_get_all_joint_angle(self, move):
         joint_angles = list()
 
-        for i in range(4):
+        for i in range(1,5):
             joint_angles.append(self.ui_get_joint_angle(i, move))
-        
+
+
         print(joint_angles)
 
         return joint_angles   
