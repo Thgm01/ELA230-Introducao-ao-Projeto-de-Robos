@@ -48,9 +48,9 @@ class MainWindow:
 
         self.ui_atualize_move(self.atual_move)
             
-
     def save_position(self):
-        print(self.ui_get_joint_angle(1, self.atual_move))
+        self.movements[self.atual_move-1] = self.ui_get_all_joint_angle(self.atual_move)
+        print(self.movements)
 
     def show(self):
         self.main_win.show()
@@ -107,7 +107,7 @@ class MainWindow:
         else:
             #salvar os valores escritos no index do atual move
             self.movements[self.atual_move-1] = self.ui_get_all_joint_angle(self.atual_move)
-            self.movements.append(self.movements[self.atual_move-1])
+            self.movements.insert(self.atual_move, self.movements[self.atual_move-1])
             self.atual_move += 1
 
         self.ui_atualize_move(self.atual_move)
