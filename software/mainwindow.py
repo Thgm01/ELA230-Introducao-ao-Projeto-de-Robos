@@ -1,6 +1,10 @@
 import sys
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import *
+from PyQt5 import uic
+
+from thread import ThreadClass
+
+import sys, time
 
 from ui_mainwindow import Ui_MainWindow
 from robot import Robot
@@ -10,27 +14,51 @@ class MainWindow:
         self.main_win = QMainWindow()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
+
         self.ui.set_hp_button.clicked.connect(self.set_hp_button_clicked)
         self.ui.set_all_button.clicked.connect(self.set_all_button_clicked)
-
         self.ui.set_j1_button.clicked.connect(self.set_j1_button_clicked)
         self.ui.set_j2_button.clicked.connect(self.set_j2_button_clicked)
         self.ui.set_j3_button.clicked.connect(self.set_j3_button_clicked)
         self.ui.set_ee_button.clicked.connect(self.set_ee_button_clicked)
+
         self.ui.new_mov_button.clicked.connect(self.new_move)
         self.ui.exclude_mov_button.clicked.connect(self.exclude_move)
         self.ui.previous_pos_button.clicked.connect(self.previous_position)
         self.ui.next_pos_button.clicked.connect(self.next_position)
-
         self.ui.save_pos_button.clicked.connect(self.save_position)
+
+        self.ui.play_move_button.clicked.connect(self.play_move)
+        self.ui.stop_move_button.clicked.connect(self.stop_move)
 
         self.ui_joints = [self.ui.joint1_pos, self.ui.joint2_pos, self.ui.joint3_pos, self.ui.ee_pos]
 
         self.robot = Robot()
 
+        self.thread = ThreadClass()
+
         self.movements = list()
         self.atual_move = 0
         self.edit_mode = False
+        self.playing = False
+
+    def play_move(self):
+        if not self.edit_mode:
+            return
+        
+        
+        self.thread.start()
+        self.thread.signal.connect(self.test)
+        
+        self.playing = True
+
+    def test(self, counter):
+        cnt = counter
+        print(cnt)
+
+    def stop_move(self):
+        self.thread.stop()
+        self.playing = False
 
     def next_position(self):
         if self.atual_move == len(self.movements):
@@ -79,20 +107,20 @@ class MainWindow:
 
         joint2_angle = self.ui_get_joint_angle(2, 0)
 
-        self.robot.set_single_joint_angle(1, joint2_angle)
+        self.robot.set_single_joint_angle(2, joint2_angle)
         self.ui_joints[1].setText(str(self.robot.atual_angles[1]))
 
     def set_j3_button_clicked(self):
 
         joint3_angle = self.ui_get_joint_angle(3, 0)
 
-        self.robot.set_single_joint_angle(1, joint3_angle)
+        self.robot.set_single_joint_angle(3, joint3_angle)
         self.ui_joints[2].setText(str(self.robot.atual_angles[2]))
 
     def set_ee_button_clicked(self):
         ee_angle = self.ui_get_joint_angle(4, 0)
 
-        self.robot.set_single_joint_angle(1, ee_angle)
+        self.robot.set_single_joint_angle(4, ee_angle)
         self.ui_joints[3].setText(str(self.robot.atual_angles[3]))
 
     def ui_atualize_joints_angles(self, joint_angles):
@@ -182,7 +210,7 @@ class MainWindow:
             self.ui.move_label.setText(f'Move {self.atual_move}')
             self.ui_atualize_joints_angles(self.movements[self.atual_move-1])
 
-        
+        print(self.movements)
 
 
 

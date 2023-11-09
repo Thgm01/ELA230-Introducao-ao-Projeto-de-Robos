@@ -18,7 +18,7 @@ class Robot:
         self.joints_number = 4
         
         self.home_angles = [90,90,90,90]
-        self.atual_angles = self.home_angles
+        self.atual_angles = [90,90,90,90]
 
 
     def degrees_to_pwm(self, angle_degrees):
@@ -42,4 +42,9 @@ class Robot:
 
     def home_position(self):
         self.set_all_joints_angle(self.home_angles)
+
+    def trajectory(self, angles_list):
+        for angles in angles_list:
+            self.set_all_joints_angle(angles)
+
 

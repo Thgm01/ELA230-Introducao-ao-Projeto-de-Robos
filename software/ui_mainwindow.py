@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(627, 576)
+        MainWindow.resize(627, 654)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.side2_robot = QtWidgets.QLabel(self.centralwidget)
@@ -93,6 +93,12 @@ class Ui_MainWindow(object):
         self.move_label.setTextFormat(QtCore.Qt.AutoText)
         self.move_label.setAlignment(QtCore.Qt.AlignCenter)
         self.move_label.setObjectName("move_label")
+        self.play_move_button = QtWidgets.QPushButton(self.centralwidget)
+        self.play_move_button.setGeometry(QtCore.QRect(150, 550, 141, 25))
+        self.play_move_button.setObjectName("play_move_button")
+        self.stop_move_button = QtWidgets.QPushButton(self.centralwidget)
+        self.stop_move_button.setGeometry(QtCore.QRect(300, 550, 141, 25))
+        self.stop_move_button.setObjectName("stop_move_button")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 627, 22))
@@ -124,3 +130,5 @@ class Ui_MainWindow(object):
         self.previous_pos_button.setText(_translate("MainWindow", "Previous Position"))
         self.next_pos_button.setText(_translate("MainWindow", "Next Position"))
         self.move_label.setText(_translate("MainWindow", "<html><head/><body><p><br/></p></body></html>"))
+        self.play_move_button.setText(_translate("MainWindow", "Play"))
+        self.stop_move_button.setText(_translate("MainWindow", "Stop"))
