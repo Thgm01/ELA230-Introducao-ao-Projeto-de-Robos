@@ -1,8 +1,8 @@
-# from board import SCL, SDA
-# import busio
+from board import SCL, SDA
+import busio
 
-# from adafruit_motor import servo
-# from adafruit_pca9685 import PCA9685
+from adafruit_motor import servo
+from adafruit_pca9685 import PCA9685
 
 UPPER_LIMIT_PWM = 2000
 LOWER_LIMIT_PWM = 10000
@@ -12,9 +12,9 @@ LOWER_LIMIT_DG = 0
 
 class Robot:
     def __init__(self):
-        # self.pca = PCA9685(busio.I2C(SCL, SDA))
-        # self.pca.reference_clock_speed = 26624000
-        # self.pca.frequency = 60
+        self.pca = PCA9685(busio.I2C(SCL, SDA))
+        self.pca.reference_clock_speed = 26624000
+        self.pca.frequency = 60
         self.joints_number = 4
         
         self.home_angles = [90,90,90,90]
@@ -27,8 +27,8 @@ class Robot:
 
 
     def set_single_joint_angle(self, joint_number, angle_degrees):
-        # angle_pwm = self.degrees_to_pwm(angle_degrees)
-        # self.pca.channels[joint_number-1].duty_cycle = angle_pwm
+        angle_pwm = self.degrees_to_pwm(angle_degrees)
+        self.pca.channels[joint_number-1].duty_cycle = angle_pwm
         self.atual_angles[joint_number-1] = angle_degrees
         print(f'Set Joint {joint_number}: {angle_degrees}\t | All angles: {self.atual_angles}')
 
