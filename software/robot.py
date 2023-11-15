@@ -28,7 +28,7 @@ class Robot:
 
     def set_single_joint_angle(self, joint_number, angle_degrees):
         angle_pwm = self.degrees_to_pwm(angle_degrees)
-        self.pca.channels[joint_number-1].duty_cycle = angle_pwm
+        # self.pca.channels[joint_number-1].duty_cycle = angle_pwm
         self.atual_angles[joint_number-1] = angle_degrees
         print(f'Set Joint {joint_number}: {angle_degrees}\t | All angles: {self.atual_angles}')
 

@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+from PyQt5.QtGui import QIntValidator
 
 from thread import ThreadClass
 
@@ -15,12 +16,27 @@ class MainWindow:
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self.main_win)
 
+        self.ui_joints = [self.ui.joint1_pos, self.ui.joint2_pos, self.ui.joint3_pos, self.ui.ee_pos]
+
+        validator = QIntValidator(0, 180)
+
+        for i in self.ui_joints:
+            i.setValidator(validator)
+
         self.ui.set_hp_button.clicked.connect(self.set_hp_button_clicked)
         self.ui.set_all_button.clicked.connect(self.set_all_button_clicked)
+
         self.ui.set_j1_button.clicked.connect(self.set_j1_button_clicked)
+        self.ui.joint1_pos.returnPressed.connect(self.set_j1_button_clicked)
+
         self.ui.set_j2_button.clicked.connect(self.set_j2_button_clicked)
+        self.ui.joint2_pos.returnPressed.connect(self.set_j2_button_clicked)
+
         self.ui.set_j3_button.clicked.connect(self.set_j3_button_clicked)
+        self.ui.joint3_pos.returnPressed.connect(self.set_j3_button_clicked)
+
         self.ui.set_ee_button.clicked.connect(self.set_ee_button_clicked)
+        self.ui.ee_pos.returnPressed.connect(self.set_ee_button_clicked)
 
         self.ui.new_mov_button.clicked.connect(self.new_move)
         self.ui.exclude_mov_button.clicked.connect(self.exclude_move)
@@ -31,8 +47,6 @@ class MainWindow:
         self.ui.play_move_button.clicked.connect(self.play_move)
         self.ui.stop_move_button.clicked.connect(self.stop_move)
 
-        self.ui_joints = [self.ui.joint1_pos, self.ui.joint2_pos, self.ui.joint3_pos, self.ui.ee_pos]
-
         self.robot = Robot()
 
         self.thread = ThreadClass()
@@ -41,6 +55,7 @@ class MainWindow:
         self.atual_move = 0
         self.edit_mode = False
         self.playing = False
+
 
     def play_move(self):
         if not self.edit_mode:
@@ -186,8 +201,9 @@ class MainWindow:
         else:
             joint_angle = self.movements[move-1]
 
-        if self.ui_joints[joint_number].toPlainText().isnumeric():
-                joint_angle = int(self.ui_joints[joint_number].toPlainText())
+        text = self.ui_joints[joint_number].text()
+        if text.isnumeric():
+            joint_angle = int(text)
         print(f'Joint {joint_number}: {joint_angle}')
         return joint_angle    
 
