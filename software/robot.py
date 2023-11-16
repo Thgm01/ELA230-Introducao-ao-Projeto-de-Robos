@@ -4,6 +4,9 @@ import busio
 from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685
 
+import numpy as np
+from time import sleep
+
 UPPER_LIMIT_PWM = 2000
 LOWER_LIMIT_PWM = 10000
 
@@ -13,12 +16,13 @@ class Robot:
         self.pca.reference_clock_speed = 26624000
         self.pca.frequency = 60
         self.joints_number = 4
+        self.velocity = 10
         
         self.home_angles = [90,90,90,90]
         self.limits = ((0, 180), (40,125), (0, 180), (0, 180))
         self.atual_angles = [90,90,90,90]
 
-    def validade(self, joint_number, angle_degrees):
+    def validate(self, joint_number, angle_degrees):
         upper_limit = self.limits[joint_number-1][1]
         lower_limit = self.limits[joint_number-1][0]
 
@@ -52,9 +56,20 @@ class Robot:
 
 
     def set_single_joint_angle(self, joint_number, angle_degrees):
-        angle_degrees = self.validade(joint_number, angle_degrees)
+
+        angle_degrees = self.validate(joint_number, angle_degrees)
+
+        increment = (angle_degrees - self.atual_angles[joint_number-1])/self.velocity 
+
+        for angle in np.arange(self.atual_angles[joint_number-1], angle_degrees, increment):
+            angle_pwm = self.degrees_to_pwm(angle)
+            self.pca.channels[joint_number-1].duty_cycle = angle_pwm
+            sleep(0.1)
+
+        
         angle_pwm = self.degrees_to_pwm(angle_degrees)
         self.pca.channels[joint_number-1].duty_cycle = angle_pwm
+
         self.atual_angles[joint_number-1] = angle_degrees
         print(f'Set Joint {joint_number}: {angle_degrees}\t | All angles: {self.atual_angles}')
 
