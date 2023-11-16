@@ -80,9 +80,7 @@ class Robot:
     def set_all_joints_angle(self, list_angle_degrees):
         angles_data = list()
         for i in range(4):
-            angles_data[i][0] = self.atual_angles[i] #algulo Inicial
-            angles_data[i][1] = (list_angle_degrees[i] - self.atual_angles[i])/self.velocity #incremento
-        
+            angles_data.append([self.atual_angles[i], (list_angle_degrees[i] - self.atual_angles[i])/self.velocity])
 
         for i in range(100):
             for joint in range(4):
