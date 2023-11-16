@@ -27,8 +27,12 @@ class Robot:
         lower_limit = self.limits[joint_number-1][0]
 
         if joint_number == 3:
-            lower_limit = abs(self.atual_angles[1]-155)
-            upper_limit = 150
+            if self.atual_angles[1] <= 130:
+                upper_limit = 140
+                lower_limit = abs(self.atual_angles[1]-155)
+            else:
+                upper_limit = abs(self.atual_angles[1]-280)
+                lower_limit = self.atual_angles[1]-70
 
             if angle_degrees < lower_limit:
                 return lower_limit

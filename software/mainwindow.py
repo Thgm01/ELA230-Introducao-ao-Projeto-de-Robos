@@ -60,19 +60,12 @@ class MainWindow:
         if not self.edit_mode:
             return
         
+        for moves in self.movements:
+            self.robot.set_all_joints_angle(moves)
         
-        self.thread.start()
-        self.thread.signal.connect(self.test)
-        
-        self.playing = True
-
-    def test(self, counter):
-        cnt = counter
-        print(cnt)
 
     def stop_move(self):
-        self.thread.stop()
-        self.playing = False
+        pass
 
     def next_position(self):
         if self.atual_move == len(self.movements):
