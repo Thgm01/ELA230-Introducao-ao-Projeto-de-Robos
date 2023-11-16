@@ -21,6 +21,7 @@ class Robot:
         self.home_angles = [90,90,90,90]
         self.limits = ((0, 180), (40,125), (0, 180), (0, 180))
         self.atual_angles = [90,90,90,90]
+        self.home_position()
 
     def validate(self, joint_number, angle_degrees):
         upper_limit = self.limits[joint_number-1][1]
