@@ -84,7 +84,7 @@ class Robot:
 
         for i in range(100):
             for joint in range(4):
-                angle_pwm = self.degrees_to_pwm(angles_data[i][0] + angles_data[i][1] * i)
+                angle_pwm = self.degrees_to_pwm(angles_data[joint][0] + angles_data[joint][1] * i)
                 self.pca.channels[joint].duty_cycle = angle_pwm
             sleep(0.01)
         
