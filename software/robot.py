@@ -67,7 +67,7 @@ class Robot:
         for angle in np.arange(self.atual_angles[joint_number-1], angle_degrees, increment):
             angle_pwm = self.degrees_to_pwm(angle)
             self.pca.channels[joint_number-1].duty_cycle = angle_pwm
-            sleep(0.01)
+            sleep(0.001)
 
         
         angle_pwm = self.degrees_to_pwm(angle_degrees)
