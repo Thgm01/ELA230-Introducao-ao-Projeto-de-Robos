@@ -56,11 +56,12 @@ class Robot:
 
 
     def set_single_joint_angle(self, joint_number, angle_degrees):
+
+        angle_degrees = self.validate(joint_number, angle_degrees)
         
         if self.atual_angles[joint_number-1] == angle_degrees:
             return
 
-        angle_degrees = self.validate(joint_number, angle_degrees)
 
         increment = (angle_degrees - self.atual_angles[joint_number-1])/self.velocity 
 
