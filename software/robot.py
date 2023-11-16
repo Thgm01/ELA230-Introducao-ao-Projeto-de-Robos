@@ -19,7 +19,7 @@ class Robot:
         self.velocity = 100.0
         
         self.home_angles = [90,90,90,90]
-        self.limits = ((0, 180), (40,125), (0, 180), (0, 180))
+        self.limits = ((0, 180), (40,180), (0, 180), (0, 180))
         self.atual_angles = [90,90,90,90]
         self.home_position()
 
