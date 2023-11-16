@@ -76,9 +76,23 @@ class Robot:
         self.atual_angles[joint_number-1] = angle_degrees
         print(f'Set Joint {joint_number}: {angle_degrees}\t | All angles: {self.atual_angles}')
 
+
     def set_all_joints_angle(self, list_angle_degrees):
-        for j in range(0, self.joints_number):
-            self.set_single_joint_angle(j+1, list_angle_degrees[j])
+        angles_data = list()
+        for i in range(4):
+            angles_data[i][0] = self.atual_angles[i] #algulo Inicial
+            angles_data[i][1] = (list_angle_degrees[i] - self.atual_angles[i])/self.velocity #incremento
+        
+
+        for i in range(100):
+            for joint in range(4):
+                angle_pwm = self.degrees_to_pwm(angles_data[i][0] + angles_data[i][1] * i)
+                self.pca.channels[joint].duty_cycle = angle_pwm
+            sleep(0.01)
+        
+        for joint in range(4):
+            angle_pwm = self.degrees_to_pwm(list_angle_degrees[joint])
+            self.pca.channels[joint].duty_cycle = angle_pwm
 
 
     def stop_robot(self):

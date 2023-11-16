@@ -56,7 +56,6 @@ class MainWindow:
         self.edit_mode = False
         self.playing = False
 
-
     def play_move(self):
         if not self.edit_mode:
             return
@@ -106,10 +105,8 @@ class MainWindow:
         self.ui_atualize_joints_angles(joint_angles)
 
     def set_all_button_clicked(self):
-        self.set_j1_button_clicked()
-        self.set_j2_button_clicked()
-        self.set_j3_button_clicked()
-        self.set_ee_button_clicked()
+        list_angles = self.ui_get_all_joint_angle(0)
+        self.robot.set_all_joints_angle(list_angles)
 
     def set_j1_button_clicked(self):
 
@@ -194,7 +191,7 @@ class MainWindow:
         #     self.ui.move_label.setText('')
         #     self.edit_mode = False
 
-    def ui_get_joint_angle(self, joint_number, move):
+    def ui_get_joint_angle(self, joint_number, move): #se move = 0 ou 1 usa angulos atuais
         joint_number -= 1
         if move <= 1:
             joint_angle = self.robot.atual_angles[joint_number]
