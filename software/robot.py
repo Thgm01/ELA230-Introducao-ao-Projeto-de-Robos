@@ -91,6 +91,8 @@ class Robot:
         for joint in range(4):
             angle_pwm = self.degrees_to_pwm(list_angle_degrees[joint])
             self.pca.channels[joint].duty_cycle = angle_pwm
+            self.atual_angles[joint] = list_angle_degrees[joint]
+
 
 
     def stop_robot(self):
