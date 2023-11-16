@@ -16,7 +16,7 @@ class Robot:
         self.pca.reference_clock_speed = 26624000
         self.pca.frequency = 60
         self.joints_number = 4
-        self.velocity = 10.0
+        self.velocity = 100.0
         
         self.home_angles = [90,90,90,90]
         self.limits = ((0, 180), (40,125), (0, 180), (0, 180))
@@ -67,7 +67,7 @@ class Robot:
         for angle in np.arange(self.atual_angles[joint_number-1], angle_degrees, increment):
             angle_pwm = self.degrees_to_pwm(angle)
             self.pca.channels[joint_number-1].duty_cycle = angle_pwm
-            sleep(0.1)
+            sleep(0.01)
 
         
         angle_pwm = self.degrees_to_pwm(angle_degrees)
